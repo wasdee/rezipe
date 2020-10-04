@@ -1,9 +1,11 @@
 [tool.poetry]
-name = "recipe"
+name = "rezipe"
 version = "0.1.0"
 description = "A way to write down your cooking/baking recipes in Python. This is an actual library, no joke (period). Made with ❤ for everyone with minimum coding literacy."
 authors = ["Nutchanon Ninyawee <nutchanon@codustry.com>"]
 license = "ISC"
+repository = "https://github.com/CircleOnCircles/recipe"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
