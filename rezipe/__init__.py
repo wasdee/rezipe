@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-from ingredient import Ingredient
+from .ingredient import Ingredient, IngredientGroup, I, ส่วนผสม

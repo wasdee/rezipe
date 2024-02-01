@@ -1,61 +1,28 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[project]
+[tool.poetry]
 name = "rezipe"
-description = 'A way to write down your cooking/baking recipes in Python. This is an actual library, no joke (period). Made with love for everyone with minimum coding literacy.'
+version = "0.1.1"
+description = "A way to write down your cooking/baking recipes in Python. This is an actual library, no joke (period). Made with ❤ for everyone with minimum coding literacy."
+authors = ["Nutchanon Ninyawee <nutchanon@codustry.com>"]
+license = "ISC"
+repository = "https://github.com/CircleOnCircles/recipe"
 readme = "README.md"
-requires-python = ">=3.10"
-license = "MIT"
-keywords = []
-authors = [
-  { name = "Nutchanon Ninyawee", email = "nutchanon@codustry.com" },
-]
-classifiers = [
-  "Development Status :: 4 - Beta",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
-]
-dependencies = []
-dynamic = ["version"]
 
-[project.urls]
-Documentation = "https://github.com/unknown/rezipe#readme"
-Issues = "https://github.com/unknown/rezipe/issues"
-Source = "https://github.com/unknown/rezipe"
+[tool.poetry.dependencies]
+python = "^3.11"
+pint = "^0.23"
+pydantic = "^2.6.0"
+marvin = "^2.1.3"
+pandas = "^2.2.0"
+rich = "^13.7.0"
+tabulate = "^0.9.0"
+pint-pandas = "^0.5"
+joblib = "^1.3.2"
 
-[tool.hatch.version]
-path = "rezipe/__about__.py"
+[tool.poetry.dev-dependencies]
 
-[tool.hatch.build.targets.sdist]
-[tool.hatch.build.targets.wheel]
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.0"
 
-[tool.hatch.envs.default]
-dependencies = [
-  "pint",
-  "pytest",
-  "pytest-cov",
-]
-[tool.hatch.envs.default.scripts]
-cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=rezipe --cov=tests"
-no-cov = "cov --no-cov"
-
-[[tool.hatch.envs.test.matrix]]
-python = ["310"]
-
-[tool.coverage.run]
-branch = true
-parallel = true
-omit = [
-  "rezipe/__about__.py",
-]
-
-[tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
