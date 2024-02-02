@@ -6,7 +6,6 @@ from dataclasses import dataclass
 @dataclass
 class Goods:
     name: str
+    price_per_unit: Decimal | None = None
     notes: str | None = None
-    price: Decimal | None = None
-    per_unit: str | None = None
     source: str | None = None

@@ -5,17 +5,21 @@ from functools import lru_cache
 from typing import Any, Literal, Self, overload
 import marvin
 from pint import Unit
-from pydantic import BaseModel
+from pydantic import BaseModel, condecimal
 import pandas as pd
 from rezipe.goods import Goods
-from rezipe.utils_jupyter import is_in_notebook, show_dataframe
+from rezipe.utils_jupyter import show_dataframe
 from joblib import Memory
 
 memory = Memory('~/.config/rezipe/cache', verbose=1)
 
 @dataclass
 class IngredientGroup:
+    _var_name: str = ""
     ingredients: list["Ingredient"]
+
+    def call_this(self, name) -> None:
+        self._var_name = name
 
     @property
     def weight(self) -> Unit:
@@ -93,11 +97,12 @@ IngredientGroup.ขอน้ำหนักหน่วย = IngredientGroup.cha
 @marvin.model
 class TLDRNutrition(BaseModel):
     subject: str
-    calories_cal: decimal.Decimal
-    crab_gram: decimal.Decimal
-    protein_gram: decimal.Decimal
-    fat_gram: decimal.Decimal
-    fiber_gram: decimal.Decimal
+    calories_cal: condecimal(decimal_places=2, ge=0)
+    crab_gram: condecimal(decimal_places=2, ge=0)
+    protein_gram: condecimal(decimal_places=2, ge=0)
+    fat_gram: condecimal(decimal_places=2, ge=0)
+    fiber_gram: condecimal(decimal_places=2, ge=0)
+    sodium_mg: condecimal(decimal_places=2, ge=0)
 
 @memory.cache
 def get_nutrition(subject: str) -> dict[str, decimal.Decimal]:
