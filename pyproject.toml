@@ -18,6 +18,8 @@ dependencies = [
     "tabulate>=0.9.0",
     "joblib>=1.4.2",
     "google-genai>=0.5.0",
+    "google-generativeai>=0.8.3",
+    "yt-dlp[curl-cffi,default]>=2025.1.15",
 ]
 
 [project.urls]
